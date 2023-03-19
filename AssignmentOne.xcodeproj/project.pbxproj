@@ -44,6 +44,7 @@
 		75AF4A5B29C7215F004393FB /* AssignmentOneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssignmentOneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75AF4A5F29C7215F004393FB /* AssignmentOneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentOneUITests.swift; sourceTree = "<group>"; };
 		75AF4A6129C7215F004393FB /* AssignmentOneUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentOneUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		75AF4AA429C73B31004393FB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +75,7 @@
 		75AF4A3829C7215E004393FB = {
 			isa = PBXGroup;
 			children = (
+				75AF4AA429C73B31004393FB /* README.md */,
 				75AF4A4329C7215E004393FB /* AssignmentOne */,
 				75AF4A5429C7215F004393FB /* AssignmentOneTests */,
 				75AF4A5E29C7215F004393FB /* AssignmentOneUITests */,
