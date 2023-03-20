@@ -7,15 +7,16 @@
 
 import SwiftUI
 
+// Structure for a list item that appears as a row in a check list
 struct listItem: Identifiable {
     let id = UUID()
     var description: String
     var checked: Bool
 }
 
-struct ContentView: View {
-    
-    @State var list = [
+// Generates and returns an example checklist's content
+func generateExampleList() -> [listItem] {
+    let list = [
         listItem(description: "Pay electricity bill", checked: true),
         listItem(description: "Call mom on her birthday", checked: false),
         listItem(description: "Buy groceries for the week", checked: true),
@@ -28,14 +29,23 @@ struct ContentView: View {
         listItem(description: "Pay credit card bill by the end of the month", checked: false)
     ]
     
-    var body: some View {
-        CheckListView(list: list)
+    return list
+}
 
+// Main application view
+struct ContentView: View {
+    @State var list = generateExampleList()
+    @State var listName = "Reminders 2"
+    
+    var body: some View {
+        CheckListView(list: list, name: listName)
     }
 }
 
+// Displays the contents of a provided check list
 struct CheckListView: View {
     var list:[listItem]
+    var name: String
     
     var body: some View {
         NavigationView{
@@ -51,7 +61,7 @@ struct CheckListView: View {
                     }
                 }
             }
-            .navigationTitle("Reminders")
+            .navigationTitle(name)
         }
     }
 }
