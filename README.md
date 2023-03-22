@@ -30,9 +30,23 @@ I'll be referencing the iOS "Reminders" application for the user interface as it
 
 ### What I've implemented
 
+#### Technical notes
+
 - A list using a custom struct
 - Updated the list to be a checklist using a HStack and system icons
 - A function that generates and returns an example list 
-- A unit test that validates the example list returned by the function
+- Unit tests that validates the example list returned by the function
+- An additional unit test to validate the ListItem struct creation itself 
 - Object naming conventions - PascalCase for structs and lowerCamelCase for variables
 - Code modularization
+- Struct functions
+
+#### Functional Requirements notes
+
+- A static check list with a title
+- At least four check list items
+- Some check list items should be checked and some unchecked
+
+### What I've encountered issues with
+
+- I initially tried to create a struct for the checklists that would contain the multiple arrays of ListItems to help with future code. Though unlike golang (which I've been using lately) where I can just include the struct inside it as a variable and be able to call it and the related functions I ran into issues with this. Since I didn't have to implement this feature immediatly I decided to come back to it later.
