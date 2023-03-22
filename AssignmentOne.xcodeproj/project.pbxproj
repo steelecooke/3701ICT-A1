@@ -105,7 +105,6 @@
 				75AF4AA529CB2294004393FB /* View */,
 				75AF4A4429C7215E004393FB /* AssignmentOneApp.swift */,
 				75AF4AA629CB229D004393FB /* Model */,
-				75AF4A4629C7215E004393FB /* ContentView.swift */,
 				75AF4A4829C7215F004393FB /* Assets.xcassets */,
 				75AF4A4A29C7215F004393FB /* Preview Content */,
 			);
@@ -140,6 +139,7 @@
 		75AF4AA529CB2294004393FB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				75AF4A4629C7215E004393FB /* ContentView.swift */,
 				75AF4AA729CB22E2004393FB /* ListItemRow.swift */,
 				75AF4AA929CB235A004393FB /* CheckListView.swift */,
 			);
