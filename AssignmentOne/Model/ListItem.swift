@@ -7,13 +7,31 @@
 
 import Foundation
 
-// Structure for a list item that appears as a row in a check list
+/// A structure representing a list item in a checklist.
+///
+/// Each `ListItem` has a unique identifier, a description, and a checked state.
+/// - Parameters:
+///     - description: String - The description of a list item
+///     - checked: Bool - Determines the icon for a list item (check mark = true, un-checked = false)
+/// - Examples:
+///     ```swift
+///     ListItem(description: "Pay electricity bill", checked: true)
+///     ```
+///     ```swift
+///     ListItem(description: "Call mom on her birthday", checked: false)
+///     ```
 struct ListItem: Identifiable {
     let id = UUID()
     var description: String
     var checked: Bool
     
-    // Generates and returns an example checklist's content
+    /// Generates and returns an example checklist's content.
+    ///
+    /// - Returns: An array of `ListItem` objects representing the example checklist.
+    /// - Examples:
+    ///     ```swift
+    ///     @State private var list = ListItem.generateExampleList()
+    ///     ```
     static func generateExampleList() -> [ListItem] {
         let list = [
             ListItem(description: "Pay electricity bill", checked: true),

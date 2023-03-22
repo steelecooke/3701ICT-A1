@@ -17,6 +17,7 @@
 		75AF4AA829CB22E2004393FB /* ListItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4AA729CB22E2004393FB /* ListItemRowView.swift */; };
 		75AF4AAA29CB235A004393FB /* CheckListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4AA929CB235A004393FB /* CheckListView.swift */; };
 		75AF4AAC29CB2394004393FB /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4AAB29CB2394004393FB /* ListItem.swift */; };
+		75AF4AAE29CB2FD6004393FB /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4AAD29CB2FD6004393FB /* Documentation.docc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		75AF4AA729CB22E2004393FB /* ListItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemRowView.swift; sourceTree = "<group>"; };
 		75AF4AA929CB235A004393FB /* CheckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListView.swift; sourceTree = "<group>"; };
 		75AF4AAB29CB2394004393FB /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
+		75AF4AAD29CB2FD6004393FB /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; name = Documentation.docc; path = AssignmentOne/Documentation.docc; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		75AF4A4329C7215E004393FB /* AssignmentOne */ = {
 			isa = PBXGroup;
 			children = (
+				75AF4AAD29CB2FD6004393FB /* Documentation.docc */,
 				75AF4AA529CB2294004393FB /* View */,
 				75AF4A4429C7215E004393FB /* AssignmentOneApp.swift */,
 				75AF4AA629CB229D004393FB /* Model */,
@@ -285,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75AF4AAC29CB2394004393FB /* ListItem.swift in Sources */,
+				75AF4AAE29CB2FD6004393FB /* Documentation.docc in Sources */,
 				75AF4A4729C7215E004393FB /* ContentView.swift in Sources */,
 				75AF4A4529C7215E004393FB /* AssignmentOneApp.swift in Sources */,
 				75AF4AA829CB22E2004393FB /* ListItemRowView.swift in Sources */,
