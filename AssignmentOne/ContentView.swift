@@ -44,24 +44,33 @@ struct ContentView: View {
 
 // Displays the contents of a provided check list
 struct CheckListView: View {
-    var list:[ListItem]
+    @State var list:[ListItem]
     var name: String
     
     var body: some View {
         NavigationView{
             List {
-                ForEach(list) { list in
-                    HStack {
-                        if list.checked {
-                            Image(systemName: "checkmark.circle.fill")
-                        } else {
-                            Image(systemName: "circle")
-                        }
-                        Text(list.description)
-                    }
+                ForEach(list) { item in
+                    ListItemRow(item: item)
                 }
             }
             .navigationTitle(name)
+        }
+    }
+}
+
+// Displays the check list row view for each individual item
+struct ListItemRow: View {
+    var item: ListItem
+    
+    var body: some View {
+        HStack {
+            if item.checked {
+                Image(systemName: "checkmark.circle.fill")
+            } else {
+                Image(systemName: "circle")
+            }
+            Text(item.description)
         }
     }
 }
