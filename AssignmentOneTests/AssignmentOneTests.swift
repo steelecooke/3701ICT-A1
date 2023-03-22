@@ -20,14 +20,14 @@ final class AssignmentOneTests: XCTestCase {
 
     // Check if the generated example list contains the expected number of items
     func testExampleListCount() throws {
-        let list = generateExampleList()
+        let list = ListItem.generateExampleList()
         
         XCTAssertEqual(list.count, 10)
     }
     
     // Check if the checked state of the items in the example list is as expected
     func testExampleListCheckedStates() throws {
-        let list = generateExampleList()
+        let list = ListItem.generateExampleList()
         let expectedCheckedStates = [true, false, true, false, true, false, true, false, true, false]
         
         for (index, item) in list.enumerated() {
@@ -37,7 +37,7 @@ final class AssignmentOneTests: XCTestCase {
     
     // Check if the generated example list is returning a valid list with no nil data
     func testExampleListItems() throws {
-        let list = generateExampleList()
+        let list = ListItem.generateExampleList()
         
         for item in list {
             XCTAssertNotNil(item)
@@ -49,7 +49,7 @@ final class AssignmentOneTests: XCTestCase {
 
     // Check if the first and last items in the list have their description value as expected
     func testExampleListDescriptions() throws {
-        let list = generateExampleList()
+        let list = ListItem.generateExampleList()
         
         XCTAssertEqual(list[0].description, "Pay electricity bill")
         XCTAssertEqual(list[9].description, "Pay credit card bill by the end of the month")
