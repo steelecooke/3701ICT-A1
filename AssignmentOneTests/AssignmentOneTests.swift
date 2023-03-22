@@ -18,6 +18,17 @@ final class AssignmentOneTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    // Check if a newly created list item has the expected data for its attributes
+    func testListItem() throws {
+        var description = "This is a test description"
+        var checked = false
+        
+        let item = ListItem(description: description, checked: checked)
+        
+        XCTAssertEqual(item.description, description)
+        XCTAssertEqual(item.checked, checked)
+    }
+    
     // Check if the generated example list contains the expected number of items
     func testExampleListCount() throws {
         let list = ListItem.generateExampleList()

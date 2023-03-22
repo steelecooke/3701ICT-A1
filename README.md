@@ -25,6 +25,8 @@ I'll be referencing the iOS "Reminders" application for the user interface as it
 - Expanding component views into other functions to make code more readable
 - Structs and classes
 - Basic Swift Unit Testing
+- Swift best practice is to use PascalCase for structs and lowerCamelCase for variables
+- Swift / iOS development code modularization
 
 ### What I've implemented
 
@@ -32,3 +34,5 @@ I'll be referencing the iOS "Reminders" application for the user interface as it
 - Updated the list to be a checklist using a HStack and system icons
 - A function that generates and returns an example list 
 - A unit test that validates the example list returned by the function
+- Object naming conventions - PascalCase for structs and lowerCamelCase for variables
+- Code modularization
