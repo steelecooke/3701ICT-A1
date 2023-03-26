@@ -27,6 +27,7 @@ I'll be referencing the iOS "Reminders" application for the user interface as it
 - Basic Swift Unit Testing
 - Swift best practice is to use PascalCase for structs and lowerCamelCase for variables
 - Swift / iOS development code modularization
+- Git source control tagging
 
 ### What I've implemented
 
@@ -40,6 +41,7 @@ I'll be referencing the iOS "Reminders" application for the user interface as it
 - Object naming conventions - PascalCase for structs and lowerCamelCase for variables
 - Code modularization
 - Struct functions
+- Git source control (commits, push, tagging)
 
 #### Functional Requirements notes
 
