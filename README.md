@@ -50,3 +50,9 @@ I'll be referencing the iOS "Reminders" application for the user interface as it
 ### What I've encountered issues with
 
 - I initially tried to create a struct for the checklists that would contain the multiple arrays of ListItems to help with future code. Though unlike golang (which I've been using lately) where I can just include the struct inside it as a variable and be able to call it and the related functions I ran into issues with this. Since I didn't have to implement this feature immediatly I decided to come back to it later.
+
+### Video Demonstration
+
+The video demonstration of the milestone 1 checklist application has been uploaded to the following YouTube URL as an unlisted video:
+
+Youtube: https://www.youtube.com/watch?v=wAAPAC1GjZc
