@@ -24,8 +24,10 @@ struct CheckListView: View {
     var body: some View {
         NavigationView{
             List {
-                ForEach(list) { item in
-                    ListItemRow(item: item)
+                ForEach($list) { $item in
+                    if !item.completed {
+                        ListItemRow(item: $item)
+                    }
                 }
             }
             .navigationTitle(name)

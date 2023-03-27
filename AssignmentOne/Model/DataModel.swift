@@ -24,6 +24,9 @@ struct ListItem: Identifiable {
     let id = UUID()
     var description: String
     var checked: Bool
+    var opacity: Double = 1
+    var completed: Bool = false
+    var graceTime: Double = 2.0
     
     /// Generates and returns an example checklist's content.
     ///
