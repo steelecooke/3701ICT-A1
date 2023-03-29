@@ -18,6 +18,8 @@
 		75AF4AAA29CB235A004393FB /* CheckListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4AA929CB235A004393FB /* CheckListView.swift */; };
 		75AF4AAC29CB2394004393FB /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4AAB29CB2394004393FB /* DataModel.swift */; };
 		75AF4AAE29CB2FD6004393FB /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4AAD29CB2FD6004393FB /* Documentation.docc */; };
+		75AF4AB029D45497004393FB /* CheckListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4AAF29D45497004393FB /* CheckListCollectionView.swift */; };
+		75AF4AB229D45CFF004393FB /* ListCheckListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4AB129D45CFF004393FB /* ListCheckListRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		75AF4AA929CB235A004393FB /* CheckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListView.swift; sourceTree = "<group>"; };
 		75AF4AAB29CB2394004393FB /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		75AF4AAD29CB2FD6004393FB /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; name = Documentation.docc; path = AssignmentOne/Documentation.docc; sourceTree = SOURCE_ROOT; };
+		75AF4AAF29D45497004393FB /* CheckListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListCollectionView.swift; sourceTree = "<group>"; };
+		75AF4AB129D45CFF004393FB /* ListCheckListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCheckListRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,8 @@
 				75AF4A4629C7215E004393FB /* ContentView.swift */,
 				75AF4AA729CB22E2004393FB /* ListItemRowView.swift */,
 				75AF4AA929CB235A004393FB /* CheckListView.swift */,
+				75AF4AAF29D45497004393FB /* CheckListCollectionView.swift */,
+				75AF4AB129D45CFF004393FB /* ListCheckListRow.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -291,8 +297,10 @@
 				75AF4AAE29CB2FD6004393FB /* Documentation.docc in Sources */,
 				75AF4A4729C7215E004393FB /* ContentView.swift in Sources */,
 				75AF4A4529C7215E004393FB /* AssignmentOneApp.swift in Sources */,
+				75AF4AB029D45497004393FB /* CheckListCollectionView.swift in Sources */,
 				75AF4AA829CB22E2004393FB /* ListItemRowView.swift in Sources */,
 				75AF4AAA29CB235A004393FB /* CheckListView.swift in Sources */,
+				75AF4AB229D45CFF004393FB /* ListCheckListRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
