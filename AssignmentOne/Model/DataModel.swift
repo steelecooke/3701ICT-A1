@@ -52,3 +52,28 @@ struct ListItem: Identifiable {
         return list
     }
 }
+
+struct CheckList: Identifiable {
+    let id = UUID()
+    
+    var name:String
+    var items:[ListItem]
+    
+    var opacity: Double = 1
+    var completed: Bool = false
+    var graceTime: Double = 2.0
+    
+    static func generateExampleCheckLists() -> [CheckList] {
+        let list = ListItem.generateExampleList()
+        
+        let checkLists = [
+            CheckList(name: "First checklist!", items: list),
+            CheckList(name: "Second checklist!", items: list),
+            CheckList(name: "Third checklist!", items: list),
+            CheckList(name: "Fourth checklist!", items: list),
+            CheckList(name: "Fith checklist!", items: list)
+        ]
+        
+        return checkLists
+    }
+}
