@@ -18,19 +18,27 @@ import SwiftUI
 ///     CheckListView(list: list, name: "Reminders")
 ///     ```
 struct CheckListView: View {
-    @State var list:[ListItem]
-    var name: String
+    @Binding var list:[ListItem]
+    @Binding var name: String
     
     var body: some View {
-        NavigationView{
-            List {
-                ForEach($list) { $item in
-                    if !item.completed {
-                        ListItemRow(item: $item)
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Text(name)
+                    .font(.system(size: 36, weight: .bold, design: .rounded))
+                Spacer()
+            }
+            .padding(.horizontal)
+            HStack {
+                List {
+                    ForEach($list) { $item in
+                        if !item.completed {
+                            ListItemRow(item: $item)
+                        }
                     }
                 }
+                .listStyle(PlainListStyle())
             }
-            .navigationTitle(name)
         }
     }
 }
