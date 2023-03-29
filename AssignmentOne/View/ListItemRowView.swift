@@ -21,7 +21,8 @@ import SwiftUI
 ///     ```
 struct ListItemRow: View {
     @Binding var item: ListItem
-    
+    @State private var timer: Timer? = nil
+
     var body: some View {
         HStack {
             if item.checked {
@@ -33,24 +34,11 @@ struct ListItemRow: View {
                 .foregroundColor(item.checked ? Color.gray : Color.primary)
                 .opacity(item.opacity)
         }.onTapGesture {
-            item.checked = !item.checked
-            item.graceTime = 2.0
-            
-            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
-                item.graceTime -= 0.1
-                if item.graceTime <= 0 {
-                    if item.checked {
-                        DispatchQueue.main.asyncAfter(deadline: .now()) {
-                            withAnimation(.easeInOut(duration: 0.5)) {
-                                item.opacity = 0.0
-                            }
-                        }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            item.completed = true
-                        }
-                    }
-                }
-            }
+            toggleItem()
         }
+    }
+    
+    private func toggleItem() {
+        item.checked.toggle()
     }
 }
