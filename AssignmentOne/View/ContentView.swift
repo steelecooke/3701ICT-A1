@@ -18,12 +18,11 @@ import SwiftUI
 ///     ```swift
 ///     ContentView()
 ///     ```
-struct ContentView: View {
-    @State private var list = ListItem.generateExampleList()
-    @State private var listName = "Reminders 2"
+struct ContentView: View {    
+    @State var checkLists = CheckList.generateExampleCheckLists()
     
     var body: some View {
-        CheckListView(list: list, name: listName)
+        CheckListCollectionView(checkLists: $checkLists)
     }
 }
 
