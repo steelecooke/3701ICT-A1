@@ -11,6 +11,8 @@ struct CheckListCollectionView: View {
     @Binding var checkLists:[CheckList]
     var title: String = "My Lists"
     
+    @State private var showPopover: Bool = false
+    
     var body: some View {
          NavigationView {
              VStack(alignment: .leading, spacing: 8) {
@@ -31,6 +33,19 @@ struct CheckListCollectionView: View {
                      }
                  }
                  .listStyle(PlainListStyle())
+                 
+                 HStack {
+                     Image(systemName: "plus.circle.fill")
+                     Text("New List")
+                         .font(.system(size: 16, weight: .bold, design: .rounded))
+                 }
+                 .padding(.horizontal)
+                 .onTapGesture {
+                     showPopover.toggle()
+                 }
+                 .popover(isPresented: $showPopover) {
+                     PopoverContentView(checkLists: $checkLists)
+                 }
              }
          }
      }
