@@ -20,9 +20,13 @@ import SwiftUI
 struct CheckListView: View {
     @Binding var list:[ListItem]
     @Binding var name: String
-    
-    @State private var itemTest = ListItem(description: "", checked: false)
+
     @FocusState private var focusedField: ListItem.ID?
+
+    @State private var showResetButton: Bool = true
+    @State private var previousListState: [ListItem] = []
+    
+    @Environment(\.editMode) var editMode
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -39,6 +43,7 @@ struct CheckListView: View {
                             ListItemRow(item: $item, focusedField: _focusedField)
                         }
                     }
+                    .onDelete(perform: onDelete)
                 }
                 .listStyle(PlainListStyle())
             }
@@ -56,6 +61,35 @@ struct CheckListView: View {
                     focusedField = newItem.id
                 }
             }
+            .toolbar {
+                if editMode?.wrappedValue.isEditing == true {
+                    if showResetButton {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button("Reset", action: {
+                                previousListState = list
+                                for index in list.indices {
+                                    list[index].checked = false
+                                }
+                                showResetButton.toggle()
+                            })
+                        }
+                    } else {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button("Undo", action: {
+                                list = previousListState
+                                showResetButton.toggle()
+                            })
+                        }
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                }
+            }
         }
+    }
+    //Refactor this into its own function
+    func onDelete(offset: IndexSet) {
+        list.remove(atOffsets: offset)
     }
 }
