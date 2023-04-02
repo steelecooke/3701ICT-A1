@@ -21,6 +21,9 @@ struct CheckListView: View {
     @Binding var list:[ListItem]
     @Binding var name: String
     
+    @State private var itemTest = ListItem(description: "", checked: false)
+    @FocusState private var focusedField: ListItem.ID?
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
@@ -33,11 +36,25 @@ struct CheckListView: View {
                 List {
                     ForEach($list) { $item in
                         if !item.completed {
-                            ListItemRow(item: $item)
+                            ListItemRow(item: $item, focusedField: _focusedField)
                         }
                     }
                 }
                 .listStyle(PlainListStyle())
+            }
+            HStack {
+                Image(systemName: "plus.circle.fill")
+                Text("New List Item")
+                    .font(.system(size: 16, weight: .bold, design: .rounded))
+            }
+            .padding(.horizontal)
+            .onTapGesture {
+                let newItem = ListItem(description: "", checked: false)
+                list.append(newItem)
+                // This async provides time for the list item to render so it can be focused.
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    focusedField = newItem.id
+                }
             }
         }
     }

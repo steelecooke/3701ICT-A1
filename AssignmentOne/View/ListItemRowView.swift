@@ -21,7 +21,7 @@ import SwiftUI
 ///     ```
 struct ListItemRow: View {
     @Binding var item: ListItem
-    @State private var timer: Timer? = nil
+    @FocusState var focusedField: ListItem.ID?
 
     var body: some View {
         ZStack {
@@ -40,6 +40,7 @@ struct ListItemRow: View {
                     TextField(item.description, text: $item.description)
                         .foregroundColor(item.checked ? Color.gray : Color.primary)
                         .opacity(item.opacity)
+                        .focused($focusedField, equals: item.id)
                 }
             }
         }
