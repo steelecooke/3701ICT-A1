@@ -31,6 +31,7 @@ struct CheckListCollectionView: View {
                              }
                          }
                      }
+                     .onDelete(perform: onDelete)
                  }
                  .listStyle(PlainListStyle())
                  
@@ -47,6 +48,12 @@ struct CheckListCollectionView: View {
                      PopoverContentView(checkLists: $checkLists)
                  }
              }
+             .navigationBarItems(trailing: EditButton())
          }
      }
+    
+    //Refactor this into its own function
+    func onDelete(offset: IndexSet) {
+        checkLists.remove(atOffsets: offset)
+    }
  }
