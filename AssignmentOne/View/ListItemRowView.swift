@@ -24,17 +24,24 @@ struct ListItemRow: View {
     @State private var timer: Timer? = nil
 
     var body: some View {
-        HStack {
-            if item.checked {
-                Image(systemName: "checkmark.circle.fill")
-            } else {
-                Image(systemName: "circle")
+        ZStack {
+            HStack {
+                ZStack {
+                    if item.checked {
+                        Image(systemName: "checkmark.circle.fill")
+                    } else {
+                        Image(systemName: "circle")
+                    }
+                }
+                .onTapGesture {
+                    toggleItem()
+                }
+                ZStack {
+                    TextField(item.description, text: $item.description)
+                        .foregroundColor(item.checked ? Color.gray : Color.primary)
+                        .opacity(item.opacity)
+                }
             }
-            Text(item.description)
-                .foregroundColor(item.checked ? Color.gray : Color.primary)
-                .opacity(item.opacity)
-        }.onTapGesture {
-            toggleItem()
         }
     }
     
