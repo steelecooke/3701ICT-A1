@@ -31,8 +31,13 @@ struct CheckListView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Text(name)
-                    .font(.system(size: 36, weight: .bold, design: .rounded))
+                if editMode?.wrappedValue.isEditing == true {
+                    TextField(name, text: $name)
+                        .font(.system(size: 36, weight: .bold, design: .rounded))
+                } else {
+                    Text(name)
+                        .font(.system(size: 36, weight: .bold, design: .rounded))
+                }
                 Spacer()
             }
             .padding(.horizontal)
