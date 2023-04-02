@@ -15,6 +15,8 @@ struct PopoverContentView: View {
     @State private var name: String = ""
     @State private var buttonDone: Bool = false
     
+    @FocusState private var isTextFieldFocused: Bool
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -25,6 +27,7 @@ struct PopoverContentView: View {
                     ZStack() {
                         TextField("New List", text: $name)
                             .multilineTextAlignment(.center)
+                            .focused($isTextFieldFocused)
                     }
                     .padding()
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
@@ -32,6 +35,9 @@ struct PopoverContentView: View {
                 }
                 .padding(.horizontal)
                 .background(Color(.systemBackground))
+                .onAppear {
+                    isTextFieldFocused = true
+                }
             }
             .navigationTitle("New List")
             .navigationBarTitleDisplayMode(.inline)
