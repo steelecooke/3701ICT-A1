@@ -11,6 +11,8 @@ import SwiftUI
 /// - Parameters:
 ///     - checkLists: [CheckList] - An array of `CheckList` objects representing all CheckLists in the app.
 /// `NewCheckListPopoverView`uses it's associated viewModel NewCheckListPopoverViewModel to append to the checklist as required..
+/// - Variables
+///     - isTextFieldFocused - Bool - Used to focus the textfield so the user is automatically focused when the popover opens.
 /// - Examples:
 ///     ```swift
 /// ForEach(viewModel.checkLists.indices, id: \.self) { index in
@@ -28,8 +30,6 @@ struct PopoverContentView: View {
     @Binding var checkLists: [CheckList]
     
     @StateObject var viewModel = NewCheckListPopoverViewModel()
-    @State private var name: String = ""
-    @State private var buttonDone: Bool = false
     
     @FocusState private var isTextFieldFocused: Bool
     
@@ -41,7 +41,7 @@ struct PopoverContentView: View {
                         .font(.system(size: 64))
                         .padding()
                     ZStack() {
-                        TextField("New List", text: $name)
+                        TextField("New List", text: $viewModel.name)
                             .multilineTextAlignment(.center)
                             .focused($isTextFieldFocused)
                     }
@@ -65,10 +65,10 @@ struct PopoverContentView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
-                        checkLists = viewModel.addEmptyCheckList(name: name, checkLists: checkLists)
+                        checkLists = viewModel.addEmptyCheckList(name: viewModel.name, checkLists: checkLists)
                         dismiss()
                     }
-                    .disabled(name.isEmpty)
+                    .disabled(viewModel.name.isEmpty)
                 }
             }
         }

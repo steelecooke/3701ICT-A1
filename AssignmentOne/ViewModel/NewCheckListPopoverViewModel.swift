@@ -13,8 +13,15 @@ import Foundation
 /// It handles updating a provided list of CheckList.
 /// - Functions:
 ///     - addEmptyCheckList - Creates an empty CheckList and appends it to a passed [CheckList] variable returning the updated [CheckList].
+/// - Variables:
+///     - name - String - Contains the name of the new CheckList a user is creating.
+///     - buttonDone - Bool - Used to determine if the done button should be disabled or enabled.
+///             -
 class NewCheckListPopoverViewModel: ObservableObject {
 
+    @Published var name: String = ""
+    @Published var buttonDone: Bool = false
+    
     /// Creates an empty CheckList and appends it to a passed [CheckList] variable returning the updated [CheckList].
     /// - Parameters:
     ///   - name - String - A name to be given to the new empty CheckList
