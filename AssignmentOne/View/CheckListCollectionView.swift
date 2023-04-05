@@ -7,9 +7,17 @@
 
 import SwiftUI
 
+/// A view that displays a list of checklists.
+///
+/// `CheckListCollectionView`uses it's associated viewModel CheckListCollectionViewModel to initialize the list of checklists and then displays it.
+/// - Examples:
+///     ```swift
+///     CheckListCollectionView()
+///     ```
 struct CheckListCollectionView: View {
-    @Binding var checkLists:[CheckList]
-    var title: String = "My Lists"
+    @StateObject var viewModel = CheckListCollectionViewModel()
+    
+    private var title: String = "My Lists"
     
     @State private var showPopover: Bool = false
     
@@ -24,14 +32,16 @@ struct CheckListCollectionView: View {
                  .padding(.horizontal)
                  
                  List {
-                     ForEach($checkLists) { $list in
+                     ForEach(viewModel.checkLists.indices, id: \.self) { index in
+                         let list = viewModel.checkLists[index]
                          if !list.completed {
-                             NavigationLink(destination: CheckListView(list: $list.items, name: $list.name)) {
-                                 ListCheckListRow(checkList: $list)
+                             NavigationLink(destination: CheckListView(list: $viewModel.checkLists[index].items, name: $viewModel.checkLists[index].name)) {
+                                 ListCheckListRow(checkList: $viewModel.checkLists[index])
                              }
                          }
                      }
-                     .onDelete(perform: onDelete)
+                     // The ForEach loop automatically passes the offset to the removeCheckList function.
+                     .onDelete(perform: viewModel.removeCheckList)
                  }
                  .listStyle(PlainListStyle())
                  
@@ -45,15 +55,10 @@ struct CheckListCollectionView: View {
                      showPopover.toggle()
                  }
                  .popover(isPresented: $showPopover) {
-                     PopoverContentView(checkLists: $checkLists)
+                     PopoverContentView(checkLists: $viewModel.checkLists)
                  }
              }
              .navigationBarItems(trailing: EditButton())
          }
      }
-    
-    //Refactor this into its own function
-    func onDelete(offset: IndexSet) {
-        checkLists.remove(atOffsets: offset)
-    }
  }
