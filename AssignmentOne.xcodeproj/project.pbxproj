@@ -19,7 +19,7 @@
 		75AF4AAC29CB2394004393FB /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4AAB29CB2394004393FB /* DataModel.swift */; };
 		75AF4AAE29CB2FD6004393FB /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4AAD29CB2FD6004393FB /* Documentation.docc */; };
 		75AF4AB029D45497004393FB /* CheckListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4AAF29D45497004393FB /* CheckListCollectionView.swift */; };
-		75AF4AB229D45CFF004393FB /* ListCheckListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4AB129D45CFF004393FB /* ListCheckListRow.swift */; };
+		75AF4AB229D45CFF004393FB /* ListCheckListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4AB129D45CFF004393FB /* ListCheckListRowView.swift */; };
 		75AF4AB429D882D8004393FB /* NewCheckListPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4AB329D882D8004393FB /* NewCheckListPopoverView.swift */; };
 		75AF4ABD29DD5D5D004393FB /* CheckListCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4ABC29DD5D5D004393FB /* CheckListCollectionViewModel.swift */; };
 		75AF4ABF29DD67EE004393FB /* NewCheckListPopoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4ABE29DD67EE004393FB /* NewCheckListPopoverViewModel.swift */; };
@@ -59,7 +59,7 @@
 		75AF4AAB29CB2394004393FB /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		75AF4AAD29CB2FD6004393FB /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; name = Documentation.docc; path = AssignmentOne/Documentation.docc; sourceTree = SOURCE_ROOT; };
 		75AF4AAF29D45497004393FB /* CheckListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListCollectionView.swift; sourceTree = "<group>"; };
-		75AF4AB129D45CFF004393FB /* ListCheckListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCheckListRow.swift; sourceTree = "<group>"; };
+		75AF4AB129D45CFF004393FB /* ListCheckListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCheckListRowView.swift; sourceTree = "<group>"; };
 		75AF4AB329D882D8004393FB /* NewCheckListPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCheckListPopoverView.swift; sourceTree = "<group>"; };
 		75AF4ABC29DD5D5D004393FB /* CheckListCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListCollectionViewModel.swift; sourceTree = "<group>"; };
 		75AF4ABE29DD67EE004393FB /* NewCheckListPopoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCheckListPopoverViewModel.swift; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 				75AF4AA929CB235A004393FB /* CheckListView.swift */,
 				75AF4AAF29D45497004393FB /* CheckListCollectionView.swift */,
 				75AF4AB329D882D8004393FB /* NewCheckListPopoverView.swift */,
-				75AF4AB129D45CFF004393FB /* ListCheckListRow.swift */,
+				75AF4AB129D45CFF004393FB /* ListCheckListRowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -320,7 +320,7 @@
 				75AF4AB029D45497004393FB /* CheckListCollectionView.swift in Sources */,
 				75AF4AA829CB22E2004393FB /* ListItemRowView.swift in Sources */,
 				75AF4AAA29CB235A004393FB /* CheckListView.swift in Sources */,
-				75AF4AB229D45CFF004393FB /* ListCheckListRow.swift in Sources */,
+				75AF4AB229D45CFF004393FB /* ListCheckListRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

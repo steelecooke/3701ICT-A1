@@ -36,7 +36,7 @@ struct CheckListCollectionView: View {
                          let list = viewModel.checkLists[index]
                          if !list.completed {
                              NavigationLink(destination: CheckListView(list: $viewModel.checkLists[index].items, name: $viewModel.checkLists[index].name)) {
-                                 ListCheckListRow(checkList: $viewModel.checkLists[index])
+                                 ListCheckListRowView(checkList: $viewModel.checkLists[index])
                              }
                          }
                      }
