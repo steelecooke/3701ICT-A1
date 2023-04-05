@@ -53,6 +53,21 @@ struct ListItem: Identifiable {
     }
 }
 
+// ... ListItem struct and its associated functions ...
+
+/// A structure representing a checklist containing multiple list items.
+///
+/// Each `CheckList` has a unique identifier, a name, and an array of `ListItem` objects.
+/// - Parameters:
+///     - name: String - The name of the checklist
+///     - items: [ListItem] - An array of `ListItem` objects representing the list items in the checklist
+/// - Examples:
+///     ```swift
+///     CheckList(name: "First checklist!", items: [ListItem(description: "Pay electricity bill", checked: true), ListItem(description: "Call mom on her birthday", checked: false)])
+///     ```
+///     ```swift
+///     CheckList(name: "First checklist!", items: list),
+///     ```
 struct CheckList: Identifiable {
     let id = UUID()
     
@@ -63,6 +78,13 @@ struct CheckList: Identifiable {
     var completed: Bool = false
     var graceTime: Double = 2.0
     
+    /// Generates and returns an example array of checklists.
+    ///
+    /// - Returns: An array of `CheckList` objects representing the example checklists.
+    /// - Examples:
+    ///     ```swift
+    ///     @State private var checklists = CheckList.generateExampleCheckLists()
+    ///     ```
     static func generateExampleCheckLists() -> [CheckList] {
         let list = ListItem.generateExampleList()
         
