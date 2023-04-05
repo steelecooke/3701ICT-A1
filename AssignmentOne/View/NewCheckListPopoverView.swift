@@ -7,6 +7,21 @@
 
 import SwiftUI
 
+/// A view that displays a popover for creating a new checklist.
+/// - Parameters:
+///     - checkLists: [CheckList] - An array of `CheckList` objects representing all CheckLists in the app.
+/// `NewCheckListPopoverView`uses it's associated viewModel NewCheckListPopoverViewModel to append to the checklist as required..
+/// - Examples:
+///     ```swift
+/// ForEach(viewModel.checkLists.indices, id: \.self) { index in
+///     let list = viewModel.checkLists[index]
+///     if !list.completed {
+///         NavigationLink(destination: CheckListView(list: $viewModel.checkLists[index].items, name: $viewModel.checkLists[index].name)) {
+///             ListCheckListRow(checkList: $viewModel.checkLists[index])
+///         }
+///     }
+/// }
+///     ```
 struct PopoverContentView: View {
     @Environment(\.dismiss) var dismiss
 
