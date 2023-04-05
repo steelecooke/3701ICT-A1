@@ -13,6 +13,8 @@ import SwiftUI
 /// - Parameters:
 ///     - list: [ListItem] - An array of `ListItem` objects representing the checklist items
 ///     - name: String - The name of the checklist, which will be displayed as the navigation title
+/// - Variables:
+///     - focusField - UUID - Uses a list item's UUID to determine which textfield to focus in the ListItemRow View.
 /// - Examples:
 ///     ```swift
 ///     CheckListView(list: list, name: "Reminders")
@@ -21,10 +23,9 @@ struct CheckListView: View {
     @Binding var list:[ListItem]
     @Binding var name: String
 
+    @StateObject var viewModel = CheckListViewModel()
+    
     @FocusState private var focusedField: ListItem.ID?
-
-    @State private var showResetButton: Bool = true
-    @State private var previousListState: [ListItem] = []
     
     @Environment(\.editMode) var editMode
     
@@ -48,7 +49,9 @@ struct CheckListView: View {
                             ListItemRow(item: $item, focusedField: _focusedField)
                         }
                     }
-                    .onDelete(perform: onDelete)
+                    .onDelete(perform: { indexSet in
+                        list = viewModel.onDelete(atOffsets: indexSet, items: list)
+                    })
                 }
                 .listStyle(PlainListStyle())
             }
@@ -59,30 +62,25 @@ struct CheckListView: View {
             }
             .padding(.horizontal)
             .onTapGesture {
-                let newItem = ListItem(description: "", checked: false)
-                list.append(newItem)
+                let result = viewModel.onTap(items: list)
+                list = result.list
                 // This async provides time for the list item to render so it can be focused.
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    focusedField = newItem.id
+                    focusedField = result.id
                 }
             }
             .toolbar {
                 if editMode?.wrappedValue.isEditing == true {
-                    if showResetButton {
+                    if viewModel.showResetButton {
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button("Reset", action: {
-                                previousListState = list
-                                for index in list.indices {
-                                    list[index].checked = false
-                                }
-                                showResetButton.toggle()
+                                list = viewModel.buttonReset(items: list)
                             })
                         }
                     } else {
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button("Undo", action: {
-                                list = previousListState
-                                showResetButton.toggle()
+                                list = viewModel.buttonUndo()
                             })
                         }
                     }
@@ -92,9 +90,5 @@ struct CheckListView: View {
                 }
             }
         }
-    }
-    //Refactor this into its own function
-    func onDelete(offset: IndexSet) {
-        list.remove(atOffsets: offset)
     }
 }
