@@ -53,8 +53,6 @@ struct ListItem: Identifiable {
     }
 }
 
-// ... ListItem struct and its associated functions ...
-
 /// A structure representing a checklist containing multiple list items.
 ///
 /// Each `CheckList` has a unique identifier, a name, and an array of `ListItem` objects.
