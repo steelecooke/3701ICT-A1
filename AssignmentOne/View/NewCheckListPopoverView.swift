@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct PopoverContentView: View {
-    @Binding var checkLists: [CheckList]
-    
     @Environment(\.dismiss) var dismiss
 
+    @Binding var checkLists: [CheckList]
+    
+    @StateObject var viewModel = NewCheckListPopoverViewModel()
     @State private var name: String = ""
     @State private var buttonDone: Bool = false
     
@@ -49,9 +50,7 @@ struct PopoverContentView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
-                        // Refactor this addition to it's own function
-                        let items: [ListItem] = []
-                        checkLists.append(CheckList(name: name, items: items))
+                        checkLists = viewModel.addEmptyCheckList(name: name, checkLists: checkLists)
                         dismiss()
                     }
                     .disabled(name.isEmpty)
