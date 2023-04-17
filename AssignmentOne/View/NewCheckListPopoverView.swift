@@ -75,7 +75,7 @@ struct PopoverContentView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
-                        checkLists = viewModel.addEmptyCheckList(name: viewModel.name, checkLists: checkLists, colourIndex: GridConstants.icons.firstIndex(of: selectedIcon) ?? 0, iconIndex: GridConstants.colors.firstIndex { $0 == selectedColor } ?? 0)
+                        checkLists = viewModel.addEmptyCheckList(name: viewModel.name, checkLists: checkLists, colourIndex: GridConstants.colors.firstIndex { $0 == selectedColor } ?? 0, iconIndex: GridConstants.icons.firstIndex(of: selectedIcon) ?? 0)
                         dismiss()
                     }
                     .disabled(viewModel.name.isEmpty)
