@@ -26,20 +26,28 @@ import SwiftUI
 ///     ```
 struct PopoverContentView: View {
     @Environment(\.dismiss) var dismiss
-
     @Binding var checkLists: [CheckList]
     
     @StateObject var viewModel = NewCheckListPopoverViewModel()
-    
     @FocusState private var isTextFieldFocused: Bool
+    
+    @State var selectedColor: Color = Color.primary
+    @State var selectedIcon: String = "checklist"
     
     var body: some View {
         NavigationView {
-            ZStack {
+            VStack() {
                 VStack(spacing: 8) {
-                    Image(systemName: "checklist")
-                        .font(.system(size: 64))
-                        .padding()
+                    ZStack {
+                        Circle()
+                            .fill(selectedColor)
+                            .frame(width: 100, height: 100)
+                            .shadow(color: Color.black.opacity(0.5), radius: 5)
+                        Image(systemName: selectedIcon)
+                            .font(.system(size: 50))
+                            .foregroundColor(Color.white)
+                    }
+                    .padding()
                     ZStack() {
                         TextField("New List", text: $viewModel.name)
                             .multilineTextAlignment(.center)
@@ -47,13 +55,15 @@ struct PopoverContentView: View {
                     }
                     .padding()
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
-                    Spacer()
                 }
                 .padding(.horizontal)
                 .background(Color(.systemBackground))
                 .onAppear {
                     isTextFieldFocused = true
                 }
+                ColourPopoverGridView(selectedColor: $selectedColor)
+                IconPopoverGridView(selectedIcon: $selectedIcon)
+                Spacer()
             }
             .navigationTitle("New List")
             .navigationBarTitleDisplayMode(.inline)
