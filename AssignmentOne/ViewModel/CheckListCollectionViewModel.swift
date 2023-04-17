@@ -35,4 +35,8 @@ class CheckListCollectionViewModel: ObservableObject {
     func removeCheckList(atOffsets offsets: IndexSet) {
         checkLists.remove(atOffsets: offsets)
     }
+    
+    func moveCheckList(from source: IndexSet, to destination: Int) {
+        checkLists.move(fromOffsets: source, toOffset: destination)
+    }
 }

@@ -41,6 +41,13 @@ class CheckListViewModel: ObservableObject {
         return list
     }
     
+    func onMove(source: IndexSet, destination: Int, items: [ListItem]) -> [ListItem] {
+        var list = items
+        list.move(fromOffsets: source, toOffset: destination)
+
+        return list
+    }
+    
     /// The function to run when the add button is tapped.
     /// Creates a new list item, appends it to the existing list, and returns the updated list and the new item's ID.
     /// - Parameters:

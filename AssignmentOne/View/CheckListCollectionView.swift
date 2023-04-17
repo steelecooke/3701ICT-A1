@@ -42,6 +42,7 @@ struct CheckListCollectionView: View {
                      }
                      // The ForEach loop automatically passes the offset to the removeCheckList function.
                      .onDelete(perform: viewModel.removeCheckList)
+                     .onMove(perform: viewModel.moveCheckList)
                  }
                  .listStyle(PlainListStyle())
                  

@@ -56,6 +56,9 @@ struct CheckListView: View {
                     .onDelete(perform: { indexSet in
                         list = viewModel.onDelete(atOffsets: indexSet, items: list)
                     })
+                    .onMove(perform: { source, destination in
+                        list = viewModel.onMove(source: source, destination: destination, items: list)
+                    })
                 }
                 .listStyle(PlainListStyle())
             }
