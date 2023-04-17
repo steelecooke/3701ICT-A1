@@ -35,7 +35,7 @@ struct CheckListCollectionView: View {
                      ForEach(viewModel.checkLists.indices, id: \.self) { index in
                          let list = viewModel.checkLists[index]
                          if !list.completed {
-                             NavigationLink(destination: CheckListView(list: $viewModel.checkLists[index].items, name: $viewModel.checkLists[index].name)) {
+                             NavigationLink(destination: CheckListView(list: $viewModel.checkLists[index].items, name: $viewModel.checkLists[index].name, colourIndex: viewModel.checkLists[index].colourIndex)) {
                                  ListCheckListRowView(checkList: $viewModel.checkLists[index])
                              }
                          }

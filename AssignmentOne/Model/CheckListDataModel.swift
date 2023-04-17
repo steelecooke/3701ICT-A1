@@ -30,6 +30,9 @@ struct CheckList: Identifiable {
     var completed: Bool = false
     var graceTime: Double = 2.0
     
+    var colourIndex: Int
+    var iconIndex: Int
+    
     /// Generates and returns an example array of checklists.
     ///
     /// - Returns: An array of `CheckList` objects representing the example checklists.
@@ -41,11 +44,11 @@ struct CheckList: Identifiable {
         let list = ListItem.generateExampleList()
         
         let checkLists = [
-            CheckList(name: "First checklist!", items: list),
-            CheckList(name: "Second checklist!", items: list),
-            CheckList(name: "Third checklist!", items: list),
-            CheckList(name: "Fourth checklist!", items: list),
-            CheckList(name: "Fith checklist!", items: list)
+            CheckList(name: "First checklist!", items: list, colourIndex: 0, iconIndex: 0),
+            CheckList(name: "Second checklist!", items: list, colourIndex: 1, iconIndex: 1),
+            CheckList(name: "Third checklist!", items: list, colourIndex: 2, iconIndex: 2),
+            CheckList(name: "Fourth checklist!", items: list, colourIndex: 3, iconIndex: 3),
+            CheckList(name: "Fifth checklist!", items: list, colourIndex: 4, iconIndex: 4)
         ]
         
         return checkLists

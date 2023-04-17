@@ -30,10 +30,10 @@ class NewCheckListPopoverViewModel: ObservableObject {
     ///     ```swift
     /// checkLists = viewModel.addEmptyCheckList(name: name, checkLists: checkLists)
     ///     ```
-    func addEmptyCheckList(name: String, checkLists: [CheckList]) -> [CheckList] {
+    func addEmptyCheckList(name: String, checkLists: [CheckList], colourIndex: Int, iconIndex: Int) -> [CheckList] {
         let items: [ListItem] = []
         var lists = checkLists
-        lists.append(CheckList(name: name, items: items))
+        lists.append(CheckList(name: name, items: items, colourIndex: colourIndex, iconIndex: iconIndex))
         
         return lists
     }

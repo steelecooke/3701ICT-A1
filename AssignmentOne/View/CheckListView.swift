@@ -22,6 +22,8 @@ import SwiftUI
 struct CheckListView: View {
     @Binding var list:[ListItem]
     @Binding var name: String
+    
+    var colourIndex: Int
 
     @StateObject var viewModel = CheckListViewModel()
     
@@ -34,9 +36,11 @@ struct CheckListView: View {
             HStack {
                 if editMode?.wrappedValue.isEditing == true {
                     TextField(name, text: $name)
+                        .foregroundColor(GridConstants.colors[colourIndex])
                         .font(.system(size: 36, weight: .bold, design: .rounded))
                 } else {
                     Text(name)
+                        .foregroundColor(GridConstants.colors[colourIndex])
                         .font(.system(size: 36, weight: .bold, design: .rounded))
                 }
                 Spacer()
@@ -57,7 +61,9 @@ struct CheckListView: View {
             }
             HStack {
                 Image(systemName: "plus.circle.fill")
+                    .foregroundColor(GridConstants.colors[colourIndex])
                 Text("New List Item")
+                    .foregroundColor(GridConstants.colors[colourIndex])
                     .font(.system(size: 16, weight: .bold, design: .rounded))
             }
             .padding(.horizontal)

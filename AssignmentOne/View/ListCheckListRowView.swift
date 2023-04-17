@@ -21,6 +21,13 @@ struct ListCheckListRowView: View {
     
     var body: some View {
         HStack {
+            ZStack {
+                Circle()
+                    .fill(GridConstants.colors[checkList.colourIndex])
+                    .frame(width: 30, height: 30)
+                Image(systemName: GridConstants.icons[checkList.iconIndex])
+                    .foregroundColor(Color.white)
+            }
             Text(checkList.name)
                 .opacity(checkList.opacity)
             Spacer()
