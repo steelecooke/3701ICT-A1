@@ -20,8 +20,8 @@ import Foundation
 ///     ```swift
 ///     CheckList(name: "First checklist!", items: list),
 ///     ```
-struct CheckList: Identifiable {
-    let id = UUID()
+struct CheckList: Identifiable, Codable {
+    var id = UUID()
     
     var name:String
     var items:[ListItem]

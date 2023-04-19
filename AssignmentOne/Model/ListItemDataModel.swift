@@ -20,8 +20,8 @@ import Foundation
 ///     ```swift
 ///     ListItem(description: "Call mom on her birthday", checked: false)
 ///     ```
-struct ListItem: Identifiable {
-    let id = UUID()
+struct ListItem: Identifiable, Codable {
+    var id = UUID()
     var description: String
     var checked: Bool
     var opacity: Double = 1

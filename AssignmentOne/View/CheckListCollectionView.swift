@@ -20,8 +20,39 @@ struct CheckListCollectionView: View {
     private var title: String = "My Lists"
     
     @State private var showPopover: Bool = false
+    @State private var showErrorAlert: Bool = false
+    @State private var isLoading: Bool = true
     
     var body: some View {
+        ZStack {
+            if isLoading {
+                loadingView
+            } else {
+                contentView
+            }
+        }
+        .task {
+            do {
+                try await viewModel.store.load()
+                isLoading = false
+            } catch {
+                print("Error loading checklists: \(error)")
+                showErrorAlert = true
+            }
+        }
+        .alert(isPresented: $showErrorAlert) {
+            Alert(title: Text("Error"), message: Text("There was an error loading the checklists. Please try again later."), dismissButton: .default(Text("OK")))
+        }
+    }
+    
+    private var loadingView: some View {
+        VStack {
+            ProgressView()
+            Text("Loading checklists...")
+        }
+    }
+    
+    private var contentView: some View {
          NavigationView {
              VStack(alignment: .leading, spacing: 8) {
                  HStack {
@@ -32,11 +63,11 @@ struct CheckListCollectionView: View {
                  .padding(.horizontal)
                  
                  List {
-                     ForEach(viewModel.checkLists.indices, id: \.self) { index in
-                         let list = viewModel.checkLists[index]
+                     ForEach(viewModel.store.checkLists.indices, id: \.self) { index in
+                         let list = viewModel.store.checkLists[index]
                          if !list.completed {
-                             NavigationLink(destination: CheckListView(list: $viewModel.checkLists[index].items, name: $viewModel.checkLists[index].name, colourIndex: viewModel.checkLists[index].colourIndex)) {
-                                 ListCheckListRowView(checkList: $viewModel.checkLists[index])
+                             NavigationLink(destination: CheckListView(list: $viewModel.store.checkLists[index].items, name: $viewModel.store.checkLists[index].name, colourIndex: viewModel.store.checkLists[index].colourIndex)) {
+                                 ListCheckListRowView(checkList: $viewModel.store.checkLists[index])
                              }
                          }
                      }
@@ -56,7 +87,7 @@ struct CheckListCollectionView: View {
                      showPopover.toggle()
                  }
                  .popover(isPresented: $showPopover) {
-                     PopoverContentView(checkLists: $viewModel.checkLists)
+                     PopoverContentView(checkLists: $viewModel.store.checkLists)
                  }
              }
              .navigationBarItems(trailing: EditButton())

@@ -18,8 +18,9 @@
 import Foundation
 
 class CheckListCollectionViewModel: ObservableObject {
-    @Published var checkLists: [CheckList] = CheckList.generateExampleCheckLists()
-
+    //@Published var checkLists: [CheckList] = CheckList.generateExampleCheckLists()
+    @Published var store = ChecklistStore()
+    
     /// Removes a checklist from the list of checklists at a given offset.
     ///
     /// - Returns: No return.
@@ -33,10 +34,10 @@ class CheckListCollectionViewModel: ObservableObject {
     /// .onDelete(perform: viewModel.removeCheckList)
     ///     ```
     func removeCheckList(atOffsets offsets: IndexSet) {
-        checkLists.remove(atOffsets: offsets)
+        store.checkLists.remove(atOffsets: offsets)
     }
     
     func moveCheckList(from source: IndexSet, to destination: Int) {
-        checkLists.move(fromOffsets: source, toOffset: destination)
+        store.checkLists.move(fromOffsets: source, toOffset: destination)
     }
 }

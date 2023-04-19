@@ -30,6 +30,7 @@
 		75AF4ACD29ED5D69004393FB /* GridConstantsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4ACC29ED5D69004393FB /* GridConstantsDataModel.swift */; };
 		75AF4AD129ED63AC004393FB /* IconPopoverGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4AD029ED63AC004393FB /* IconPopoverGridView.swift */; };
 		75AF4AD329ED63C1004393FB /* ColourPopoverGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4AD229ED63C1004393FB /* ColourPopoverGridView.swift */; };
+		75AF4AD729EED523004393FB /* CheckListStoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF4AD629EED523004393FB /* CheckListStoreDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		75AF4ACC29ED5D69004393FB /* GridConstantsDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridConstantsDataModel.swift; sourceTree = "<group>"; };
 		75AF4AD029ED63AC004393FB /* IconPopoverGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPopoverGridView.swift; sourceTree = "<group>"; };
 		75AF4AD229ED63C1004393FB /* ColourPopoverGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourPopoverGridView.swift; sourceTree = "<group>"; };
+		75AF4AD629EED523004393FB /* CheckListStoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListStoreDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 				75AF4AAB29CB2394004393FB /* ListItemDataModel.swift */,
 				75AF4AC229DD94C1004393FB /* CheckListDataModel.swift */,
 				75AF4ACC29ED5D69004393FB /* GridConstantsDataModel.swift */,
+				75AF4AD629EED523004393FB /* CheckListStoreDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				75AF4A4729C7215E004393FB /* ContentView.swift in Sources */,
 				75AF4A4529C7215E004393FB /* AssignmentOneApp.swift in Sources */,
 				75AF4AB029D45497004393FB /* CheckListCollectionView.swift in Sources */,
+				75AF4AD729EED523004393FB /* CheckListStoreDataModel.swift in Sources */,
 				75AF4AA829CB22E2004393FB /* ListItemRowView.swift in Sources */,
 				75AF4AC929ED5604004393FB /* ColourButtonView.swift in Sources */,
 				75AF4AC129DD81CE004393FB /* CheckListViewModel.swift in Sources */,
