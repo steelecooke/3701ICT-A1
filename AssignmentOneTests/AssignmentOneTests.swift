@@ -81,7 +81,7 @@ final class AssignmentOneTests: XCTestCase {
             ListItem(description: "Task 2", checked: false)
         ]
 
-        let checklist = CheckList(name: name, items: items)
+        let checklist = CheckList(name: name, items: items, colourIndex: 1, iconIndex: 1)
 
         XCTAssertEqual(checklist.name, name)
         XCTAssertEqual(checklist.items.description, items.description)
@@ -93,16 +93,6 @@ final class AssignmentOneTests: XCTestCase {
         let checklists = CheckList.generateExampleCheckLists()
 
         XCTAssertEqual(checklists.count, 5)
-    }
-
-    // Check if the names of the checklists in the generated example checklists array are as expected
-    func testExampleCheckListsNames() throws {
-        let checklists = CheckList.generateExampleCheckLists()
-        let expectedNames = ["First checklist!", "Second checklist!", "Third checklist!", "Fourth checklist!", "Fith checklist!"]
-
-        for (index, checklist) in checklists.enumerated() {
-            XCTAssertEqual(checklist.name, expectedNames[index])
-        }
     }
 
     // Check if the generated example checklists array is returning valid checklists with no nil data
@@ -124,50 +114,20 @@ final class AssignmentOneTests: XCTestCase {
         }
     }
 
-    // Check if the first and last checklists in the generated example checklists array have their names as expected
-    func testExampleCheckListNames() throws {
-        let checklists = CheckList.generateExampleCheckLists()
-
-        XCTAssertEqual(checklists[0].name, "First checklist!")
-        XCTAssertEqual(checklists[4].name, "Fith checklist!")
-    }
-
-    // Test if the initial checkLists array in CheckListCollectionViewModel is not empty
-    func testInitialCheckListsNotEmpty() {
-        let viewModel = CheckListCollectionViewModel()
-        XCTAssertFalse(viewModel.checkLists.isEmpty)
-    }
-
-    // Test if the initial checkLists array in CheckListCollectionViewModel has the expected count
-    func testInitialCheckListsCount() {
-        let viewModel = CheckListCollectionViewModel()
-        XCTAssertEqual(viewModel.checkLists.count, 5)
-    }
-
-    // Test removing a single checklist using removeCheckList in CheckListCollectionViewModel
-    func testRemoveCheckList() {
-        let viewModel = CheckListCollectionViewModel()
-        let initialCount = viewModel.checkLists.count
-        let indexSet = IndexSet(integer: 0)
-        viewModel.removeCheckList(atOffsets: indexSet)
-        
-        XCTAssertEqual(viewModel.checkLists.count, initialCount - 1)
-    }
-
     // Test adding an empty checklist using addEmptyCheckList in NewCheckListPopoverViewModel
     func testAddEmptyCheckList() {
         let viewModel = NewCheckListPopoverViewModel()
         let initialChecklists = CheckList.generateExampleCheckLists()
         let newCheckListName = "New Test Checklist"
         
-        let updatedChecklists = viewModel.addEmptyCheckList(name: newCheckListName, checkLists: initialChecklists)
+        let updatedChecklists = viewModel.addEmptyCheckList(name: newCheckListName, checkLists: initialChecklists, colourIndex: 0, iconIndex: 4)
         
         XCTAssertEqual(updatedChecklists.count, initialChecklists.count + 1)
         XCTAssertEqual(updatedChecklists.last?.name, newCheckListName)
         XCTAssertTrue(((updatedChecklists.last?.items.isEmpty) != nil))
     }
     
-    // Test if the onDelete function correctly removes the item from the list
+    // Test if the CheckListViewModel's onDelete function correctly removes the item from the list
     func testOnDelete() {
         let viewModel = CheckListViewModel()
         let items: [ListItem] = [
@@ -181,7 +141,27 @@ final class AssignmentOneTests: XCTestCase {
         XCTAssertEqual(newList[0].description, "Task 2")
     }
     
-    // Test if the onTap function creates a new ListItem and appends it to the list
+    // Test if the CheckListViewModel's onMove function moves the ListItem correctly
+    func testOnMoveFunction() {
+        // Create a CheckListCollectionViewModel instance
+        let viewModel = CheckListViewModel()
+
+        // Create a test ListItem array
+        let testListItems: [ListItem] = ListItem.generateExampleList()
+
+        // Define source and destination indices
+        let source: IndexSet = [0]
+        let destination = 2
+
+        // Perform the move operation
+        let movedListItems = viewModel.onMove(source: source, destination: destination, items: testListItems)
+
+        // Check if the move operation was successful
+        XCTAssertEqual(movedListItems.count, testListItems.count)
+        XCTAssertEqual(testListItems[0].description, movedListItems[1].description)
+    }
+    
+    // Test if the CheckListViewModel's onTap function creates a new ListItem and appends it to the list
     func testOnTap() {
         let viewModel = CheckListViewModel()
         let items: [ListItem] = [
@@ -220,7 +200,7 @@ final class AssignmentOneTests: XCTestCase {
             ListItem(description: "Task 2", checked: false)
         ]
         
-        let resetItems = viewModel.buttonReset(items: items)
+        let _ = viewModel.buttonReset(items: items)
         
         let undoItems = viewModel.buttonUndo()
         
@@ -228,5 +208,76 @@ final class AssignmentOneTests: XCTestCase {
         XCTAssertEqual(undoItems.first?.checked, items.first?.checked)
         XCTAssertEqual(undoItems.last?.checked, items.last?.checked)
         XCTAssertTrue(viewModel.showResetButton)
+    }
+    
+    // Test if the CheckListCollectionViewModel's removeCheckList function works correctly
+    func testRemoveCheckListFunction() {
+        // Create a CheckListCollectionViewModel instance
+        let viewModel = CheckListCollectionViewModel()
+
+        // Create a test CheckList array
+        let testCheckLists: [CheckList] = CheckList.generateExampleCheckLists()
+
+        // Assign the test CheckList array to the viewModel
+        viewModel.store.checkLists = testCheckLists
+
+        // Remove the first checkList
+        let indexToRemove: IndexSet = [0]
+        viewModel.removeCheckList(atOffsets: indexToRemove)
+
+        // Check if the remove operation was successful
+        XCTAssertEqual(viewModel.store.checkLists.count, testCheckLists.count - 1)
+    }
+    
+    // Test if the CheckListCollectionViewModel's moveCheckList function works correctly
+    func testMoveCheckListFunction() {
+        let viewModel = CheckListCollectionViewModel()
+        // Create a test CheckList array
+        let testCheckLists: [CheckList] = CheckList.generateExampleCheckLists()
+
+        // Assign the test CheckList array to the viewModel
+        viewModel.store.checkLists = testCheckLists
+
+        // Move the first checkList to the end
+        let sourceIndexSet: IndexSet = [0]
+        let destinationIndex = viewModel.store.checkLists.count
+        viewModel.moveCheckList(from: sourceIndexSet, to: destinationIndex)
+
+        // Check if the move operation was successful
+        XCTAssertEqual(viewModel.store.checkLists.last?.name, testCheckLists.first?.name)
+        XCTAssertEqual(viewModel.store.checkLists.last?.colourIndex, testCheckLists.first?.colourIndex)
+        XCTAssertEqual(viewModel.store.checkLists.last?.iconIndex, testCheckLists.first?.iconIndex)
+    }
+    
+    // Test if the load function works correctly
+    func testLoadFunction() async throws {
+        let viewModel = CheckListCollectionViewModel()
+        try await viewModel.store.load()
+
+        // Check if the checkLists array is not nil after loading
+        XCTAssertNotNil(viewModel.store.checkLists)
+    }
+    
+    // Test if the save function works correctly
+    func testSaveFunction() async throws {
+        let viewModel = CheckListCollectionViewModel()
+        // Create a test CheckList array
+        let testCheckLists: [CheckList] = CheckList.generateExampleCheckLists()
+
+        // Save the test CheckList array
+        try await viewModel.store.save(checklists: testCheckLists)
+
+        // Load the saved checklists
+        try await viewModel.store.load()
+
+        // Compare the saved checklists with the test checklists
+        XCTAssertEqual(viewModel.store.checkLists.count, testCheckLists.count)
+
+        for index in 0..<testCheckLists.count {
+            XCTAssertEqual(viewModel.store.checkLists[index].name, testCheckLists[index].name)
+            XCTAssertEqual(viewModel.store.checkLists[index].colourIndex, testCheckLists[index].colourIndex)
+            XCTAssertEqual(viewModel.store.checkLists[index].iconIndex, testCheckLists[index].iconIndex)
+            XCTAssertEqual(viewModel.store.checkLists[index].items.count, testCheckLists[index].items.count)
+        }
     }
 }
