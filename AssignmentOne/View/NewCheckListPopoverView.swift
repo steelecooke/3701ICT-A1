@@ -11,18 +11,25 @@ import SwiftUI
 /// - Parameters:
 ///     - checkLists: [CheckList] - An array of `CheckList` objects representing all CheckLists in the app.
 /// `NewCheckListPopoverView`uses it's associated viewModel NewCheckListPopoverViewModel to append to the checklist as required..
-/// - Variables
+/// - Variables:
+///     - viewModel: NewCheckListPopoverViewModel - The ViewModel associated with the view.
 ///     - isTextFieldFocused - Bool - Used to focus the textfield so the user is automatically focused when the popover opens.
+///     - selectedColor - Color - Used to determine the colour the end user is selecting for the checklist.
+///     - selectedIcon - String - Used to determine the SF Symbol for the checklist the user selected.
 /// - Examples:
-///     ```swift
-/// ForEach(viewModel.checkLists.indices, id: \.self) { index in
-///     let list = viewModel.checkLists[index]
-///     if !list.completed {
-///         NavigationLink(destination: CheckListView(list: $viewModel.checkLists[index].items, name: $viewModel.checkLists[index].name)) {
-///             ListCheckListRowView(checkList: $viewModel.checkLists[index])
-///         }
-///     }
-/// }
+/// ```swift
+///HStack {
+///    Image(systemName: "plus.circle.fill")
+///    Text("New List")
+///        .font(.system(size: 16, weight: .bold, design: .rounded))
+///}
+///.padding(.horizontal)
+///.onTapGesture {
+///    showPopover.toggle()
+///}
+///.popover(isPresented: $showPopover) {
+///    PopoverContentView(checkLists: $viewModel.store.checkLists)
+///}
 ///     ```
 struct PopoverContentView: View {
     @Environment(\.dismiss) var dismiss

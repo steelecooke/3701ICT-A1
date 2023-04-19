@@ -7,6 +7,18 @@
 
 import SwiftUI
 
+/// A view that displays a grid of icons for selecting an icon for a new checklist.
+///
+/// This view is used as a part of `PopoverContentView` to allow users to choose an icon for a new checklist.
+/// The user can select an icon from a `LazyVGrid` containing icons from the `GridConstants.icons` array.
+///
+/// - Parameters:
+///     - selectedIcon: Binding<String> - A binding to a `String` representing the currently selected icon.
+///
+/// - Examples:
+/// ```swift
+/// IconPopoverGridView(selectedIcon: $selectedIcon)
+/// ```
 struct IconPopoverGridView: View {
     @Binding var selectedIcon: String
     

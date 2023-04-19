@@ -7,6 +7,19 @@
 
 import SwiftUI
 
+/// A view that displays an icon button for selecting an icon.
+///
+/// This view is used as a part of `IconPopoverGridView` to allow users to choose an icon for a new checklist.
+/// When the button is tapped, the associated icon is assigned to the `selectedIcon` binding.
+///
+/// - Parameters:
+///     - icon: String - The SF Symbol name associated with the button.
+///     - selectedIcon: Binding<String> - A binding to a `String` representing the currently selected icon.
+///
+/// - Examples:
+/// ```swift
+/// IconView(icon: icon, selectedIcon: $selectedIcon)
+/// ```
 struct IconView: View {
     var icon: String
     @Binding var selectedIcon: String

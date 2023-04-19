@@ -13,6 +13,7 @@ import SwiftUI
 /// - Parameters:
 ///     - list: [ListItem] - An array of `ListItem` objects representing the checklist items
 ///     - name: String - The name of the checklist, which will be displayed as the navigation title
+///     - colourIndex - Int - The colour index used to update the checklist title and add item button colour.
 /// - Variables:
 ///     - focusField - UUID - Uses a list item's UUID to determine which textfield to focus in the ListItemRow View.
 /// - Examples:

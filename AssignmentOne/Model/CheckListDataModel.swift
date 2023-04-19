@@ -22,14 +22,10 @@ import Foundation
 ///     ```
 struct CheckList: Identifiable, Codable {
     var id = UUID()
-    
     var name:String
     var items:[ListItem]
-    
     var opacity: Double = 1
     var completed: Bool = false
-    var graceTime: Double = 2.0
-    
     var colourIndex: Int
     var iconIndex: Int
     

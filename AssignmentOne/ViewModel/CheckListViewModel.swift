@@ -17,6 +17,7 @@ import Foundation
 /// - Functions:
 ///     - onTap - Used to create a new list item when the add button is tapped. Returns the new item's ID so we can focus the new field.
 ///     - onDelete - Used to delete a list item when the user in edit mode and clicks the delete UI element.
+///     - onMove - Used to move a list item from one position to a new position.
 ///     - buttonReset - Resets all items in a [ListItem] so that they are unchecked.
 ///     - buttonUndo - Reverts the previous Reset button change reverting each item in a [ListItem] back to their checked state before it was tapped.
 
@@ -41,6 +42,15 @@ class CheckListViewModel: ObservableObject {
         return list
     }
     
+    /// The function to run when a user attempts to move an item by holding down and dragging or using the move icon in edit mode.
+    /// Used to move a list item from one position to a new position.
+    ///
+    /// - Parameters:
+    ///     - source: IndexSet - The current position of the item in the list.
+    ///     - destination: Int - The new position of the item in the list.
+    ///     - items: [ListItem] - The list of [ListItem] to manipulate and move the element within.
+    /// - Returns:
+    ///     - [ListItem] - Updated [ListItem] with the item moved to the new position.
     func onMove(source: IndexSet, destination: Int, items: [ListItem]) -> [ListItem] {
         var list = items
         list.move(fromOffsets: source, toOffset: destination)

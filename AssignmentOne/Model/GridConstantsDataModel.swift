@@ -8,6 +8,24 @@
 import Foundation
 import SwiftUI
 
+/// A struct containing constants for grid-related views in the app.
+///
+/// `GridConstants` includes predefined arrays of colors, icons, and columns for grid views in the application.
+///
+/// - Variables:
+///     - colors: [Color] - An array of `Color` objects representing available colors for checklists.
+///     - icons: [String] - An array of `String` objects representing the names of available icons for checklists.
+///     - columns: [GridItem] - An array of `GridItem` objects representing the grid layout for the grid views.
+///
+/// - Examples:
+/// ```swift
+/// LazyVGrid(columns: GridConstants.columns, spacing: 20) {
+///     ForEach(GridConstants.colors, id: \.self) { color in
+///         ColourButtonView(color: color, selectedColor: $selectedColor)
+///     }
+/// }
+/// .padding()
+/// ```
 struct GridConstants {
     static let colors: [Color] = [
         .red, .orange, .yellow, .green, .cyan, .blue, .purple, .pink, .brown, .gray, .primary

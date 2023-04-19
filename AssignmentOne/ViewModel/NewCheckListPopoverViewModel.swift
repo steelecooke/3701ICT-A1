@@ -25,10 +25,12 @@ class NewCheckListPopoverViewModel: ObservableObject {
     /// - Parameters:
     ///   - name - String - A name to be given to the new empty CheckList
     ///   - checkLists - [CheckList] - An existing [CheckList] variable to appened the empty list to and return.
+    ///   - colourIndex - Int - The selected colour by the user relating to the colours array in the GridConstantsDataModel struct.
+    ///   - iconIndex: Int - The selected icon by the user relating to the icons array in the GridConstantsDataModel struct.
     /// - Returns: [CheckList]
     /// - Examples:
     ///     ```swift
-    /// checkLists = viewModel.addEmptyCheckList(name: name, checkLists: checkLists)
+    /// checkLists = viewModel.addEmptyCheckList(name: viewModel.name, checkLists: checkLists, colourIndex: GridConstants.colors.firstIndex { $0 == selectedColor } ?? 0, iconIndex: GridConstants.icons.firstIndex(of: selectedIcon) ?? 0)
     ///     ```
     func addEmptyCheckList(name: String, checkLists: [CheckList], colourIndex: Int, iconIndex: Int) -> [CheckList] {
         let items: [ListItem] = []
