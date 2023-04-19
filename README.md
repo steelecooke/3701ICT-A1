@@ -135,3 +135,75 @@ The video demonstration of the milestone 2 checklist application has been upload
 
 Youtube: 
 https://www.youtube.com/watch?v=mAnV4vc-H28
+
+## MileStone 3
+
+### Summary
+
+The third and final milestone requires me to update the existing CheckList App that runs on iOS in the XCode simulator to be a fully polished application.
+
+It will need the following functionaility:
+- Ability to reoder items in both the Master View and Detail View (Checklists and their items) in edit mode
+- Ability for a user to delete an item using a standard swipe gesture without needing press the edit button first
+- Persistent data using JSON serialisation
+- App Icon
+- Loading indicator while data is being loaded
+- Fully polished app
+- Updated tests to comprehensively test the application
+- UI continues to work on different sized devices
+- Git tagged as milestone3
+
+I've also added the additional requirement for the user being able to select an icon and colour for their checklist, then have this display updating the font colour and displaying the icon. I believe this works towards the "fully polished" application requirement.
+
+I'll need to continue implementing version control for the project using git with XCode's built in source control.
+
+I'll be referencing the iOS "Reminders" application for the user interface as it has a similar functionality and a good user interface.
+
+### What I've learnt
+
+- Swift Classes
+- JSON data persistence
+- App Icons implementation and size requirements
+- How to display loading elements (ProgressView)
+- Moving items in a list using onMove
+- Swift view builder
+- Text and image SF symbol colouring 
+
+### What I've implemented
+
+#### Technical notes
+
+- Model-View-ViewModel with separate ViewModels for the respective View
+- Persistent Data - JSON serialization class for saving and loading data
+- Updated master view to use a loading screen while the persistent checklist data is being loaded
+- Structs for CheckList icons and colours
+- Refactored code for the colour and icon implementation
+- Swipe gesture deletion for detail and master view items (checklists and their items)
+- Move/reoder items function in the ViewModel
+- New and refactored unit tests
+- Created and added an App Icon to the project
+- Updated DoC comments
+- Git source control (commits, push, tagging)
+
+#### Functional Requirements notes
+
+- Detail View - Reorder items in list (item)
+- Detail View - Delete items using a swipe gesture outside of edit view (item)
+- Master View - Reorder items in list (checklist)
+- Master View - Delete items using a swipe gesture outside of edit view (checklist)
+- Master View - Toggle between loading view and content view depending on if the JSON data has been decoded and loaded  
+- [CheckList] JSON encoding data persistence
+- Unit Tests - Updated for new functions and refactored where required
+- App Icon
+- Fully polished app
+
+### What I've encountered issues with
+
+- I initially tried to implement a view builder for the icon/colour grids instead of having two separate views though I ran out of time trying to implement it with the optional parameters. (e.g. I didn't want to add the colour variable to an icon list and vice versa)
+- The JSON persistent data was quite difficult for me to implement, there weren't many good resources I could find online immediately and there were a number of custom libraries people were recommending that I decided against using as I felt like it wouldn't be suitable for this course. (Mainly focusing on the Foundation and SwiftUI for this course)
+
+### Video Demonstration
+
+The video demonstration of the milestone 3 checklist application has been uploaded to the following YouTube URL as an unlisted video:
+
+Youtube: 
